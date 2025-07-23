@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.users.dto.CompanyDto;
+import com.users.entity.AuthRequest;
 import com.users.entity.Company;
 import com.users.entity.ModuleAccess;
 import com.users.entity.User;
@@ -44,6 +46,9 @@ public class SuperAdminController {
 
 	@Autowired
 	private ModuleAccessRepository moduleAccessRepository;
+	
+	private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	
 	
 	
 	@GetMapping("/checkDuplicateEmail/{email}")
@@ -197,6 +202,30 @@ public class SuperAdminController {
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 
 			}
+		}
+		
+		
+		@PutMapping("/updateCompanyCredentials")
+		public ResponseEntity<?> updateCompanyCredentials(@RequestBody AuthRequest authRequest) {
+
+			try {
+               
+				User user=userRepository.getUserByUserName(authRequest.getUsername());
+						
+				
+				user.setEmail(authRequest.getUsername());
+				user.setPassword(passwordEncoder.encode(authRequest.getPassword()));
+				 userRepository.save(user);
+				return ResponseEntity.ok(user);
+
+			} catch (Exception e) {
+
+				e.printStackTrace();
+
+				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+
+			}
+
 		}
 	  
 

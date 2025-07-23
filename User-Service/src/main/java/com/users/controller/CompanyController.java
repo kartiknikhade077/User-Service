@@ -1,18 +1,21 @@
 package com.users.controller;
 
-import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,16 +25,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
-import com.users.dto.CompanyDto;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.users.dto.EmployeeDto;
+import com.users.entity.AuthRequest;
 import com.users.entity.Company;
+import com.users.entity.CompanyBankDetails;
 import com.users.entity.Departments;
 import com.users.entity.Employee;
 import com.users.entity.ModuleAccess;
 import com.users.entity.Role;
 import com.users.entity.User;
+import com.users.repository.CompanyBankDetailsRepository;
 import com.users.repository.CompanyRepository;
 import com.users.repository.DepartmentsRepository;
 import com.users.repository.EmployeeRepository;
@@ -60,7 +72,12 @@ public class CompanyController {
 	@Autowired
 	private RoleRepository roleRepository;
 	
+	@Autowired
+	private CompanyBankDetailsRepository companyBankDetailsRepository;
 	
+	private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+
 	
 	Company company;
 	User user;
@@ -70,6 +87,14 @@ public class CompanyController {
 
 		company = companyRepository.findByCompanyEmail(userName);
 		user=userRepository.getUserByUserName(userName);
+		
+	}
+	
+	@GetMapping("/getUserInfo")
+	public User getUserInfo(@RequestHeader("userName") String  userName) {
+
+		return  userRepository.getUserByUserName(userName);
+		
 		
 	}
 	
@@ -366,6 +391,100 @@ public class CompanyController {
 		}
 
 	}
+	
+	
+	
+	@PostMapping("/updateCompanyBankDetials")
+	public ResponseEntity<?> updateCompanyBankDetials(@RequestBody CompanyBankDetails companyBankDetails) {
+
+		try {
+			companyBankDetails.setCompanyId(company.getCompanyId());
+			companyBankDetailsRepository.save(companyBankDetails);
+			return ResponseEntity.ok(companyBankDetails);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+
+		}
+
+	}
+	
+	
+	@GetMapping("/getCompanyBankDetials")
+	public ResponseEntity<?> getCompanyBankDetials() {
+
+		try {
+
+			CompanyBankDetails companyBankDetail= companyBankDetailsRepository.findByCompanyId(company.getCompanyId());
+
+			return ResponseEntity.ok(companyBankDetail);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+
+		}
+
+	}
+	
+	
+	@PutMapping("/updateCompanyCredentials")
+	public ResponseEntity<?> updateCompanyCredentials(@RequestBody AuthRequest authRequest) {
+
+		try {
+
+			user.setEmail(authRequest.getUsername());
+			user.setPassword(passwordEncoder.encode(authRequest.getPassword()));
+			userRepository.save(user);
+			return ResponseEntity.ok(user);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+
+		}
+
+	}
+	
+
+	@PutMapping(value = "/updateCompanyInfo",consumes = {"multipart/form-data"})
+	public ResponseEntity<?> updateCompanyInfo(
+	        @RequestPart("companyInfo") String companyInfoJson,
+	        @RequestPart(value = "favicon", required = false) MultipartFile favicon,
+	        @RequestPart(value = "mainLogo", required = false) MultipartFile mainLogo,
+	        @RequestPart(value = "applogo", required = false) MultipartFile applogo) throws JsonMappingException, JsonProcessingException {
+          
+		ObjectMapper objectMapper = new ObjectMapper();
+         Company companyData = objectMapper.readValue(companyInfoJson, Company.class);
+		
+	    try {
+	        if (favicon != null) {
+	        	companyData.setFavicon(favicon.getBytes());
+	        }
+	        if (mainLogo != null) {
+	        	companyData.setMainLogo(mainLogo.getBytes());
+	        }
+	        if (applogo != null) {
+	        	companyData.setApplogo(applogo.getBytes());
+	        }
+	        companyData.setCompanyId(company.getCompanyId());
+	        companyData.setUserId(company.getUserId());
+	        companyRepository.save(companyData);
+	        return ResponseEntity.ok(company);
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+	    }
+	}
+
 	
 	
 	
