@@ -13,7 +13,7 @@ public class Employee {
 	private int employeeId;
 	private int userId;
 	private int companyId;
-	private String Name;
+	private String name;
 	private String email;
 	private String phone;
 	@Column(length = 5000)
@@ -29,7 +29,7 @@ public class Employee {
 		super();
 		this.employeeId = employeeId;
 		this.userId = userId;
-		Name = name;
+		name = name;
 		this.email = email;
 		this.phone = phone;
 		this.description = description;
@@ -63,10 +63,10 @@ public class Employee {
 		this.companyId = companyId;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		name = name;
 	}
 	public String getEmail() {
 		return email;
