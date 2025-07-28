@@ -39,6 +39,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	        WHERE e.email = :email
 	        """, nativeQuery = true)
 	    EmployeeDto findByEmailWithAccess(@Param("email") String email);
-	 Page<Employee> findByCompanyIdAndNameContainingIgnoreCase(int companyId, String name, Pageable pageable);
+	 Page<Employee> findByCompanyId(int companyId, Pageable pageable);
 
 }
