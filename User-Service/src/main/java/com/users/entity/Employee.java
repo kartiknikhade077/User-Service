@@ -29,7 +29,7 @@ public class Employee {
 		super();
 		this.employeeId = employeeId;
 		this.userId = userId;
-		name = name;
+		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.description = description;
@@ -62,12 +62,15 @@ public class Employee {
 	public void setCompanyId(int companyId) {
 		this.companyId = companyId;
 	}
+    
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
-		name = name;
+		this.name = name;
 	}
+
 	public String getEmail() {
 		return email;
 	}

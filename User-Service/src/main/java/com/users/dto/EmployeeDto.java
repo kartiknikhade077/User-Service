@@ -7,7 +7,7 @@ public class EmployeeDto {
 	private int employeeId;
 	private int userId;
 	private int companyId;
-	private String Name;
+	private String name;
 	private String email;
 	private String password;
 	private String phone;
@@ -29,7 +29,7 @@ public class EmployeeDto {
 		super();
 		this.employeeId = employeeId;
 		this.userId = userId;
-		Name = name;
+		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.description = description;
@@ -46,7 +46,7 @@ public class EmployeeDto {
 		super();
 		this.employeeId = employeeId;
 		this.userId = userId;
-		Name = name;
+		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.description = description;
@@ -74,12 +74,7 @@ public class EmployeeDto {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public String getName() {
-		return Name;
-	}
-	public void setName(String name) {
-		Name = name;
-	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -159,6 +154,13 @@ public class EmployeeDto {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	
 	
 	
