@@ -172,7 +172,7 @@ public class CompanyController {
 		try {
 			Map<String ,Object> data=new HashMap<String , Object>();
 			 Pageable pageable = PageRequest.of(page, size, Sort.by("employeeId").descending());
-			 System.err.println("id "+company.getCompanyId());
+			
 		        Page<Employee> employeePage = employRepository.findByCompanyId(company.getCompanyId(), pageable);
 		        List<Employee> employeeList = employeePage.getContent();
 		        data.put("employeeList", employeeList);
