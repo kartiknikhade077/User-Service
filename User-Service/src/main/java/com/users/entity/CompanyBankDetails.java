@@ -1,5 +1,7 @@
 package com.users.entity;
 
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,9 +10,9 @@ import jakarta.persistence.Id;
 @Entity
 public class CompanyBankDetails {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long companyBankId;
-	private long companyId;
+	@UuidGenerator
+	private String companyBankId;
+	private String companyId;
 	private String bankName;
 	private String accountNumber;
 	private String ifscCode;
@@ -18,7 +20,7 @@ public class CompanyBankDetails {
 	private String upi;
 	private String panNumber;
 	private String email;
-	public CompanyBankDetails(long companyBankId, long companyId, String bankName, String accountNumber,
+	public CompanyBankDetails(String companyBankId, String companyId, String bankName, String accountNumber,
 			String ifscCode, String swiftCode, String upi, String panNumber, String email) {
 		super();
 		this.companyBankId = companyBankId;
@@ -35,17 +37,13 @@ public class CompanyBankDetails {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public long getCompanyBankId() {
+	
+
+	public String getCompanyBankId() {
 		return companyBankId;
 	}
-	public void setCompanyBankId(long companyBankId) {
+	public void setCompanyBankId(String companyBankId) {
 		this.companyBankId = companyBankId;
-	}
-	public long getCompanyId() {
-		return companyId;
-	}
-	public void setCompanyId(long companyId) {
-		this.companyId = companyId;
 	}
 	public String getBankName() {
 		return bankName;
@@ -88,6 +86,12 @@ public class CompanyBankDetails {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getCompanyId() {
+		return companyId;
+	}
+	public void setCompanyId(String companyId) {
+		this.companyId = companyId;
 	}
 	
 	

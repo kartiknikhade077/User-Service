@@ -1,18 +1,18 @@
 package com.users.entity;
 
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Employee {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int employeeId;
+	@UuidGenerator
+	private String employeeId;
 	private int userId;
-	private int companyId;
+	private String companyId;
 	private String name;
 	private String email;
 	private String phone;
@@ -20,12 +20,12 @@ public class Employee {
 	private String description;
 	private String department;
 	private String gender;
-	private long departmentId;
-	private long roleId;
+	private String departmentId;
+	private String roleId;
 	private String roleName;
 	
-	public Employee(int employeeId, int userId, String name, String email, String phone, String description,
-			String department, String gender,int companyId) {
+	public Employee(String employeeId, int userId, String name, String email, String phone, String description,
+			String department, String gender,String companyId) {
 		super();
 		this.employeeId = employeeId;
 		this.userId = userId;
@@ -43,24 +43,23 @@ public class Employee {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public int getEmployeeId() {
+    
+    
+	public String getEmployeeId() {
 		return employeeId;
 	}
-	public void setEmployeeId(int employeeId) {
+
+
+	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
+
+
 	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
-	}
-	public int getCompanyId() {
-		return companyId;
-	}
-	public void setCompanyId(int companyId) {
-		this.companyId = companyId;
 	}
     
 	public String getName() {
@@ -103,24 +102,7 @@ public class Employee {
 	}
 
 
-	public long getDepartmentId() {
-		return departmentId;
-	}
-
-
-	public void setDepartmentId(long departmentId) {
-		this.departmentId = departmentId;
-	}
-
-
-	public long getRoleId() {
-		return roleId;
-	}
-
-
-	public void setRoleId(long roleId) {
-		this.roleId = roleId;
-	}
+	
 
 
 	public String getRoleName() {
@@ -130,6 +112,36 @@ public class Employee {
 
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
+	}
+
+
+	public String getCompanyId() {
+		return companyId;
+	}
+
+
+	public void setCompanyId(String companyId) {
+		this.companyId = companyId;
+	}
+
+
+	public String getDepartmentId() {
+		return departmentId;
+	}
+
+
+	public void setDepartmentId(String departmentId) {
+		this.departmentId = departmentId;
+	}
+
+
+	public String getRoleId() {
+		return roleId;
+	}
+
+
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
 	}
 
 	

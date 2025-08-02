@@ -11,13 +11,13 @@ import org.springframework.data.repository.query.Param;
 import com.users.dto.EmployeeDto;
 import com.users.entity.Employee;
 
-public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+public interface EmployeeRepository extends JpaRepository<Employee, String> {
 	
 	Employee findEmployeeByEmail(String username);
 	
-	Employee findByEmployeeId(int CId);
+	Employee findByEmployeeId(String CId);
 	
-	List<Employee> findByCompanyId(int companyId);
+	List<Employee> findByCompanyId(String companyId);
 	
 	@Query(value = """
 	        SELECT 
@@ -39,6 +39,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	        WHERE e.email = :email
 	        """, nativeQuery = true)
 	    EmployeeDto findByEmailWithAccess(@Param("email") String email);
-	 Page<Employee> findByCompanyId(int companyId, Pageable pageable);
+	 Page<Employee> findByCompanyId(String companyId, Pageable pageable);
 
 }

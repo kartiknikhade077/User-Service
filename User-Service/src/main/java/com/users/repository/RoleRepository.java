@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.users.entity.Role;
 
-public interface RoleRepository extends JpaRepository<Role , Long>{
+public interface RoleRepository extends JpaRepository<Role , String>{
 
-	Page<Role> findByCompanyId(int companyId,Pageable pageable);
-	List<Role> findByDepartmentId(int companyId);
-	Role findByRoleId(int roleId);
+	Page<Role> findByCompanyId(String companyId,Pageable pageable);
+	List<Role> findByDepartmentId(String departmentId);
+	Role findByRoleId(String roleId);
 }

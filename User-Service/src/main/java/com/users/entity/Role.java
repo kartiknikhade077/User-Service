@@ -1,5 +1,7 @@
 package com.users.entity;
 
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,17 +10,17 @@ import jakarta.persistence.Id;
 @Entity
 public class Role {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long roleId;
-	private long departmentId;
-	private int companyId;
+	@UuidGenerator
+	private String roleId;
+	private String departmentId;
+	private String companyId;
 	private String roleName;
 	
 	// access module Name
 	private boolean leadAccess;
 	private boolean templateAccess;
 	private boolean emailAccess;
-	public Role(long roleId, long departmentId, int companyId, String roleName, boolean leadAccess,
+	public Role(String roleId, String departmentId, String companyId, String roleName, boolean leadAccess,
 			boolean templateAccess, boolean emailAccess) {
 		super();
 		this.roleId = roleId;
@@ -33,24 +35,20 @@ public class Role {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public long getRoleId() {
+
+	public String getRoleId() {
 		return roleId;
 	}
-	public void setRoleId(long roleId) {
+	public void setRoleId(String roleId) {
 		this.roleId = roleId;
 	}
-	public long getDepartmentId() {
+	public String getDepartmentId() {
 		return departmentId;
 	}
-	public void setDepartmentId(long departmentId) {
+	public void setDepartmentId(String departmentId) {
 		this.departmentId = departmentId;
 	}
-	public int getCompanyId() {
-		return companyId;
-	}
-	public void setCompanyId(int companyId) {
-		this.companyId = companyId;
-	}
+
 	public String getRoleName() {
 		return roleName;
 	}
@@ -66,6 +64,12 @@ public class Role {
 	public boolean isTemplateAccess() {
 		return templateAccess;
 	}
+	public String getCompanyId() {
+		return companyId;
+	}
+	public void setCompanyId(String companyId) {
+		this.companyId = companyId;
+	}
 	public void setTemplateAccess(boolean templateAccess) {
 		this.templateAccess = templateAccess;
 	}
@@ -75,6 +79,8 @@ public class Role {
 	public void setEmailAccess(boolean emailAccess) {
 		this.emailAccess = emailAccess;
 	}
+	
+	
 	
 
 }

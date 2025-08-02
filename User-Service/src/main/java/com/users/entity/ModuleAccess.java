@@ -1,23 +1,23 @@
 package com.users.entity;
 
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class ModuleAccess {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int moduleAccessId;
-	private int companyId;
-	private int employeeId;
+	@UuidGenerator
+	private String moduleAccessId;
+	private String companyId;
+	private String employeeId;
 	private boolean leadAccess;
 	private boolean template;
 	private boolean email;
 	
-	public ModuleAccess(int moduleAccessId, int companyId, int employeeId, boolean lead, boolean template,
+	public ModuleAccess(String moduleAccessId, String companyId, String employeeId, boolean lead, boolean template,
 			boolean email) {
 		super();
 		this.moduleAccessId = moduleAccessId;
@@ -35,31 +35,38 @@ public class ModuleAccess {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-	public int getModuleAccessId() {
+	public String getModuleAccessId() {
 		return moduleAccessId;
 	}
 
-	public void setModuleAccessId(int moduleAccessId) {
+
+
+	public void setModuleAccessId(String moduleAccessId) {
 		this.moduleAccessId = moduleAccessId;
 	}
 
-	public int getCompanyId() {
+
+
+	public String getCompanyId() {
 		return companyId;
 	}
 
-	public void setCompanyId(int companyId) {
+
+	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
 
-	public int getEmployeeId() {
+
+	public String getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(int employeeId) {
+
+
+	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
+
 
 
 	public boolean isLeadAccess() {

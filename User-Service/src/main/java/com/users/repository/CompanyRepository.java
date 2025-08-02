@@ -12,9 +12,8 @@ import com.users.entity.Company;
 import java.util.List;
 
 @Repository
-public interface CompanyRepository extends JpaRepository<Company, Integer> {
+public interface CompanyRepository extends JpaRepository<Company, String> {
 
-	public List<Company> findById(int id);
 
 	public Company findByCompanyEmail(String companyEmail);
 
@@ -35,7 +34,7 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
 	
  Page<Company> findByCompanyNameContainingIgnoreCase(String companyName, Pageable pageable);
 	 
-	 Company findByCompanyId(int companyId);
+	 Company findByCompanyId(String companyId);
 
 
 }

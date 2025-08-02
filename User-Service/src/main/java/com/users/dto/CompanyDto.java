@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class CompanyDto {
 	
 	private String  companyName;
-	private int companyId;
+	private String companyId;
 	private String email;
 	private String password;
 	private String desciption;
@@ -17,7 +17,7 @@ public class CompanyDto {
 	
 	
 	
-	public CompanyDto(String companyName, int companyId, String email, String password, String desciption,
+	public CompanyDto(String companyName, String companyId, String email, String password, String desciption,
 			boolean leadAccess, boolean tempalteAccess, boolean emailAccess,LocalDate expirayDate) {
 		super();
 		this.companyName = companyName;
@@ -34,7 +34,7 @@ public class CompanyDto {
 
 	//Company Login DTO
 
-	public CompanyDto(String companyName, int companyId, String email, String desciption, boolean leadAccess,
+	public CompanyDto(String companyName, String companyId, String email, String desciption, boolean leadAccess,
 			boolean tempalteAccess, boolean emailAccess) {
 		this.companyName = companyName;
 		this.companyId = companyId;
@@ -94,11 +94,11 @@ public class CompanyDto {
 		this.emailAccess = emailAccess;
 	}
 
-	public int getCompanyId() {
+	public String getCompanyId() {
 		return companyId;
 	}
 
-	public void setCompanyId(int companyId) {
+	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
 

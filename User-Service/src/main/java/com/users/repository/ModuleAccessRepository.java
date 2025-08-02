@@ -11,10 +11,10 @@ import com.users.entity.ModuleAccess;
 import jakarta.transaction.Transactional;
 
 @Repository
-public interface ModuleAccessRepository extends JpaRepository<ModuleAccess, Integer> {
+public interface ModuleAccessRepository extends JpaRepository<ModuleAccess, String> {
 	
-	ModuleAccess findByEmployeeId(int employeeId);
-ModuleAccess findByEmployeeIdAndCompanyId(int employeeId,int companyId);
+	ModuleAccess findByEmployeeId(String employeeId);
+ModuleAccess findByEmployeeIdAndCompanyId(String employeeId,String companyId);
 	
 	@Modifying
 	@Transactional
@@ -23,7 +23,7 @@ ModuleAccess findByEmployeeIdAndCompanyId(int employeeId,int companyId);
 	    @Param("leadAccess") Boolean leadAccess,
 	    @Param("template") Boolean template,
 	    @Param("email") Boolean email,
-	    @Param("companyId") int companyId
+	    @Param("companyId") String companyId
 	);
 	
 	@Modifying
@@ -33,7 +33,7 @@ ModuleAccess findByEmployeeIdAndCompanyId(int employeeId,int companyId);
 	    @Param("leadAccess") Boolean leadAccess,
 	    @Param("template") Boolean template,
 	    @Param("email") Boolean email,
-	    @Param("employeeId") int employeeId
+	    @Param("employeeId") String employeeId
 	);
 
 }

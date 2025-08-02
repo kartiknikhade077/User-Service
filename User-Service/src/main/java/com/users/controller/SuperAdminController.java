@@ -88,7 +88,7 @@ public class SuperAdminController {
 
 		ModuleAccess module = new ModuleAccess();
 		module.setCompanyId(company.getCompanyId());
-		module.setEmployeeId(0);
+		module.setEmployeeId(null);
 		module.setEmail(companyDto.isEmailAccess());
 		module.setLeadAccess(companyDto.isLeadAccess());
 		module.setTemplate(companyDto.isTempalteAccess());
@@ -130,12 +130,12 @@ public class SuperAdminController {
 		
 		
 	  @GetMapping("/getCompanyInfo/{companyId}")	
-	  public ResponseEntity<?> getCompanyInfo(@PathVariable int companyId){
+	  public ResponseEntity<?> getCompanyInfo(@PathVariable String companyId){
 		  
 		  try {
 			Map<String , Object> companyInfo=new HashMap<String, Object>();
 			  Company company=companyRepository.findByCompanyId(companyId);
-			  ModuleAccess moduleAccess=moduleAccessRepository.findByEmployeeIdAndCompanyId(0,companyId);
+			  ModuleAccess moduleAccess=moduleAccessRepository.findByEmployeeIdAndCompanyId(null,companyId);
 			  User user=userRepository.getUserByUserName(company.getCompanyEmail());
 			  
 			  companyInfo.put("company", company);

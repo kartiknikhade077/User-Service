@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.users.entity.CompanyBankDetails;
 
-public interface CompanyBankDetailsRepository extends JpaRepository<CompanyBankDetails , Integer> {
+public interface CompanyBankDetailsRepository extends JpaRepository<CompanyBankDetails , String> {
 
-	CompanyBankDetails findByCompanyId(int companyId);
+	CompanyBankDetails findByCompanyId(String companyId);
 }

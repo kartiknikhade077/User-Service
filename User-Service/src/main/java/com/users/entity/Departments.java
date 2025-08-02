@@ -1,5 +1,7 @@
 package com.users.entity;
 
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,14 +10,14 @@ import jakarta.persistence.Id;
 @Entity
 public class Departments {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long departmentId;
-	private int companyId;
+    @UuidGenerator
+	private String departmentId;
+	private String companyId;
 	private String departmentName;
 	private String departmentEmail;
 	
 	
-	public Departments(long departmentId, int companyId, String departmentName,String departmentEmail) {
+	public Departments(String departmentId, String companyId, String departmentName,String departmentEmail) {
 		super();
 		this.departmentId = departmentId;
 		this.companyId = companyId;
@@ -30,18 +32,23 @@ public class Departments {
 	}
 
 
-	public long getDepartmentId() {
+	public String getDepartmentId() {
 		return departmentId;
 	}
-	public void setDepartmentId(long departmentId) {
+	public void setDepartmentId(String departmentId) {
 		this.departmentId = departmentId;
 	}
-	public int getCompanyId() {
+    
+
+	public String getCompanyId() {
 		return companyId;
 	}
-	public void setCompanyId(int companyId) {
+
+
+	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
+
 
 	public String getDepartmentName() {
 		return departmentName;

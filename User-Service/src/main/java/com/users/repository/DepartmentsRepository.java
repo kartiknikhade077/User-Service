@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.users.entity.Departments;
 
 @Repository
-public interface DepartmentsRepository extends JpaRepository<Departments, Long> {
+public interface DepartmentsRepository extends JpaRepository<Departments, String> {
 
-	Page<Departments> findByCompanyId(int companyId,Pageable pageable );
+	Page<Departments> findByCompanyId(String companyId,Pageable pageable );
 }

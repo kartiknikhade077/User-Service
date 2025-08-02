@@ -1,9 +1,9 @@
 package com.users.entity;
 
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 
@@ -12,8 +12,8 @@ public class Company {
 	
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int companyId;
+	@UuidGenerator
+	private String companyId;
 	private int userId;
 	private String companyName;
 	private String companyEmail;
@@ -36,7 +36,7 @@ public class Company {
 	private String phoneNumber;
 	private String gstinNumber;
 	private String defaultTimezone;
-	public Company(int companyId, int userId, String companyName, String companyEmail, String companyDescription) {
+	public Company(String companyId, int userId, String companyName, String companyEmail, String companyDescription) {
 		super();
 		this.companyId = companyId;
 		this.userId = userId;
@@ -49,10 +49,12 @@ public class Company {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getCompanyId() {
+	
+	
+	public String getCompanyId() {
 		return companyId;
 	}
-	public void setCompanyId(int companyId) {
+	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
 	public int getUserId() {
