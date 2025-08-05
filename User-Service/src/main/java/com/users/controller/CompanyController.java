@@ -1,5 +1,7 @@
 package com.users.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -482,7 +484,24 @@ public class CompanyController {
 	    }
 	}
 
-	
+	@GetMapping("/getEmployeeList/{employeeIds}")
+	public List<Map<String, String>> getEmployeesbyProjectId(@PathVariable String employeeIds){
+		
+		  List<String> ids = Arrays.asList(employeeIds.split(","));
+		    
+		    List<Object[]> employeeDataList = employRepository.findEmployeeIdAndNameRaw(ids);
+
+		    List<Map<String, String>> result = new ArrayList<>();
+
+		    for (Object[] row : employeeDataList) {
+		        Map<String, String> map = new HashMap<>();
+		        map.put("employeeId", (String) row[0]);
+		        map.put("employeeName", (String) row[1]);
+		        result.add(map);
+		    }
+
+		    return result;
+	}
 	
 	
 

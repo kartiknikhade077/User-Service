@@ -40,5 +40,10 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
 	        """, nativeQuery = true)
 	    EmployeeDto findByEmailWithAccess(@Param("email") String email);
 	 Page<Employee> findByCompanyId(String companyId, Pageable pageable);
+	 
+	 @Query("SELECT e.employeeId, e.name FROM Employee e WHERE e.employeeId IN :ids")
+	 List<Object[]> findEmployeeIdAndNameRaw(@Param("ids") List<String> ids);
+
+
 
 }
