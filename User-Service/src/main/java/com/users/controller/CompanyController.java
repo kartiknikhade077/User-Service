@@ -204,6 +204,7 @@ public class CompanyController {
 	public ResponseEntity<?> updateEmployee(@RequestBody Employee employee) {
 
 		try {
+			employee.setCompanyId(company.getCompanyId());
 			employRepository.save(employee);
 			return ResponseEntity.ok(employee);
 
