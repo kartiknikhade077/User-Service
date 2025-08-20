@@ -24,6 +24,16 @@ public class EmployeeDto {
 	private boolean leadAccess;
 	private boolean templateAccess;
 	private boolean emailAccess;
+	private boolean customerViewAll;
+	private boolean customerOwnView;
+	private boolean customerCreate;
+	private boolean customerDelete;
+	private boolean customerEdit;
+	private boolean projectViewAll;
+	private boolean projectOwnView;
+	private boolean projectCreate;
+	private boolean projectDelete;
+	private boolean projectEdit;
 	public EmployeeDto(int employeeId,int companyId, int userId, String name, String email, String phone, String description,
 			String department, String gender, boolean leadAccess, boolean templateAccess, boolean emailAccess,String password) {
 		super();
@@ -41,23 +51,46 @@ public class EmployeeDto {
 		this.companyId=companyId;
 		this.password=password;
 	}
-	public EmployeeDto(int employeeId,int companyId, int userId, String name, String email, String phone, String description,
-			String department, String gender, boolean leadAccess, boolean templateAccess, boolean emailAccess) {
+	
+	
+	
+	public EmployeeDto(int employeeId, int userId, int companyId, String name, String email, String password,
+			String phone, String description, String department, String gender, String departmentId, String roleId,
+			String roleName, boolean leadAccess, boolean templateAccess, boolean emailAccess, boolean customerViewAll,
+			boolean customerOwnView, boolean customerCreate, boolean customerDelete, boolean customerEdit,
+			boolean projectViewAll, boolean projectOwnView, boolean projectCreate, boolean projectDelete,
+			boolean projectEdit) {
 		super();
 		this.employeeId = employeeId;
 		this.userId = userId;
+		this.companyId = companyId;
 		this.name = name;
 		this.email = email;
+		this.password = password;
 		this.phone = phone;
 		this.description = description;
 		this.department = department;
 		this.gender = gender;
+		this.departmentId = departmentId;
+		this.roleId = roleId;
+		this.roleName = roleName;
 		this.leadAccess = leadAccess;
 		this.templateAccess = templateAccess;
 		this.emailAccess = emailAccess;
-		this.companyId=companyId;
-		
+		this.customerViewAll = customerViewAll;
+		this.customerOwnView = customerOwnView;
+		this.customerCreate = customerCreate;
+		this.customerDelete = customerDelete;
+		this.customerEdit = customerEdit;
+		this.projectViewAll = projectViewAll;
+		this.projectOwnView = projectOwnView;
+		this.projectCreate = projectCreate;
+		this.projectDelete = projectDelete;
+		this.projectEdit = projectEdit;
 	}
+
+
+
 	public EmployeeDto() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -160,6 +193,66 @@ public class EmployeeDto {
 	}
 	public void setRoleId(String roleId) {
 		this.roleId = roleId;
+	}
+	public boolean isCustomerViewAll() {
+		return customerViewAll;
+	}
+	public void setCustomerViewAll(boolean customerViewAll) {
+		this.customerViewAll = customerViewAll;
+	}
+	public boolean isCustomerOwnView() {
+		return customerOwnView;
+	}
+	public void setCustomerOwnView(boolean customerOwnView) {
+		this.customerOwnView = customerOwnView;
+	}
+	public boolean isCustomerCreate() {
+		return customerCreate;
+	}
+	public void setCustomerCreate(boolean customerCreate) {
+		this.customerCreate = customerCreate;
+	}
+	public boolean isCustomerDelete() {
+		return customerDelete;
+	}
+	public void setCustomerDelete(boolean customerDelete) {
+		this.customerDelete = customerDelete;
+	}
+	public boolean isCustomerEdit() {
+		return customerEdit;
+	}
+	public void setCustomerEdit(boolean customerEdit) {
+		this.customerEdit = customerEdit;
+	}
+	public boolean isProjectViewAll() {
+		return projectViewAll;
+	}
+	public void setProjectViewAll(boolean projectViewAll) {
+		this.projectViewAll = projectViewAll;
+	}
+	public boolean isProjectOwnView() {
+		return projectOwnView;
+	}
+	public void setProjectOwnView(boolean projectOwnView) {
+		this.projectOwnView = projectOwnView;
+	}
+	public boolean isProjectCreate() {
+		return projectCreate;
+	}
+	public void setProjectCreate(boolean projectCreate) {
+		this.projectCreate = projectCreate;
+	}
+	public boolean isProjectDelete() {
+		return projectDelete;
+	}
+	public void setProjectDelete(boolean projectDelete) {
+		this.projectDelete = projectDelete;
+	}
+	public boolean isProjectEdit() {
+		return projectEdit;
+	}
+	public void setProjectEdit(boolean projectEdit) {
+		this.projectEdit = projectEdit;
 	}
 	
 	

@@ -3,8 +3,6 @@ package com.users.entity;
 import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
@@ -20,6 +18,16 @@ public class Role {
 	private boolean leadAccess;
 	private boolean templateAccess;
 	private boolean emailAccess;
+	private boolean customerViewAll;
+	private boolean customerOwnView;
+	private boolean customerCreate;
+	private boolean customerDelete;
+	private boolean customerEdit;
+	private boolean projectViewAll;
+	private boolean projectOwnView;
+	private boolean projectCreate;
+	private boolean projectDelete;
+	private boolean projectEdit;
 	public Role(String roleId, String departmentId, String companyId, String roleName, boolean leadAccess,
 			boolean templateAccess, boolean emailAccess) {
 		super();
@@ -78,6 +86,66 @@ public class Role {
 	}
 	public void setEmailAccess(boolean emailAccess) {
 		this.emailAccess = emailAccess;
+	}
+	public boolean isCustomerViewAll() {
+		return customerViewAll;
+	}
+	public void setCustomerViewAll(boolean customerViewAll) {
+		this.customerViewAll = customerViewAll;
+	}
+	public boolean isCustomerOwnView() {
+		return customerOwnView;
+	}
+	public void setCustomerOwnView(boolean customerOwnView) {
+		this.customerOwnView = customerOwnView;
+	}
+	public boolean isCustomerCreate() {
+		return customerCreate;
+	}
+	public void setCustomerCreate(boolean customerCreate) {
+		this.customerCreate = customerCreate;
+	}
+	public boolean isCustomerDelete() {
+		return customerDelete;
+	}
+	public void setCustomerDelete(boolean customerDelete) {
+		this.customerDelete = customerDelete;
+	}
+	public boolean isCustomerEdit() {
+		return customerEdit;
+	}
+	public void setCustomerEdit(boolean customerEdit) {
+		this.customerEdit = customerEdit;
+	}
+	public boolean isProjectViewAll() {
+		return projectViewAll;
+	}
+	public void setProjectViewAll(boolean projectViewAll) {
+		this.projectViewAll = projectViewAll;
+	}
+	public boolean isProjectOwnView() {
+		return projectOwnView;
+	}
+	public void setProjectOwnView(boolean projectOwnView) {
+		this.projectOwnView = projectOwnView;
+	}
+	public boolean isProjectCreate() {
+		return projectCreate;
+	}
+	public void setProjectCreate(boolean projectCreate) {
+		this.projectCreate = projectCreate;
+	}
+	public boolean isProjectDelete() {
+		return projectDelete;
+	}
+	public void setProjectDelete(boolean projectDelete) {
+		this.projectDelete = projectDelete;
+	}
+	public boolean isProjectEdit() {
+		return projectEdit;
+	}
+	public void setProjectEdit(boolean projectEdit) {
+		this.projectEdit = projectEdit;
 	}
 	
 	

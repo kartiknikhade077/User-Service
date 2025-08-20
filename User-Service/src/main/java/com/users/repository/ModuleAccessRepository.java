@@ -14,7 +14,7 @@ import jakarta.transaction.Transactional;
 public interface ModuleAccessRepository extends JpaRepository<ModuleAccess, String> {
 	
 	ModuleAccess findByEmployeeId(String employeeId);
-ModuleAccess findByEmployeeIdAndCompanyId(String employeeId,String companyId);
+    ModuleAccess findByEmployeeIdAndCompanyId(String employeeId,String companyId);
 	
 	@Modifying
 	@Transactional

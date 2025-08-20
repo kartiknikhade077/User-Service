@@ -78,12 +78,17 @@ public class CompanyController {
 	
 	Company company;
 	User user;
+	Employee employee;
 
 	@ModelAttribute
 	public void companyDetails(@RequestHeader("userName") String  userName) {
-
-		company = companyRepository.findByCompanyEmail(userName);
 		user=userRepository.getUserByUserName(userName);
+		if(user.getRole().equalsIgnoreCase("ROLE_COMPANY")) {
+		company = companyRepository.findByCompanyEmail(userName);
+		}else {
+			employee=employRepository.findEmployeeByEmail(userName);
+		}
+		
 		
 	}
 	
@@ -101,6 +106,18 @@ public class CompanyController {
 		return  companyRepository.findByCompanyEmail(userName);
 		
 		
+	}
+	
+
+	
+	
+	@GetMapping("/getModuleAccessInfo")
+	public ModuleAccess getModuleAccessInfo() {
+		if (user.getRole().equalsIgnoreCase("ROLE_COMPANY")) {
+			return moduleAccessRepository.findByEmployeeIdAndCompanyId(company.getCompanyId(), null);
+		} else {
+			return moduleAccessRepository.findByEmployeeId(employee.getEmployeeId());
+		}
 	}
 	
 	
@@ -139,6 +156,17 @@ public class CompanyController {
 			module.setEmail(employeeDto.isEmailAccess());
 			module.setLeadAccess(employeeDto.isLeadAccess());
 			module.setTemplate(employeeDto.isTemplateAccess());
+			module.setCustomerViewAll(employeeDto.isCustomerViewAll());
+			module.setCustomerOwnView(employeeDto.isCustomerOwnView());
+			module.setCustomerCreate(employeeDto.isCustomerCreate());
+			module.setCustomerDelete(employeeDto.isCustomerDelete());
+			module.setCustomerEdit(employeeDto.isCustomerEdit());
+			module.setProjectViewAll(employeeDto.isProjectViewAll());
+			module.setProjectOwnView(employeeDto.isProjectOwnView());
+			module.setProjectCreate(employeeDto.isProjectCreate());
+			module.setProjectDelete(employeeDto.isProjectDelete());
+			module.setProjectEdit(employeeDto.isProjectEdit());
+			
 
 			moduleAccessRepository.save(module);
 
@@ -224,8 +252,26 @@ public class CompanyController {
 
 		try {
 			
-			moduleAccessRepository.updateModuleAccessByEmployeeId(moduleAccess.isLeadAccess(),moduleAccess.isTemplate(),moduleAccess.isEmail(),moduleAccess.getEmployeeId());
-			return ResponseEntity.ok("Modules Updated Succesfully");
+			ModuleAccess access=moduleAccessRepository.findByEmployeeId(moduleAccess.getEmployeeId());
+			   access.setLeadAccess(moduleAccess.isLeadAccess());
+		        access.setTemplate(moduleAccess.isTemplate());
+		        access.setEmail(moduleAccess.isEmail());
+
+		        access.setCustomerViewAll(moduleAccess.isCustomerViewAll());
+		        access.setCustomerOwnView(moduleAccess.isCustomerOwnView());
+		        access.setCustomerCreate(moduleAccess.isCustomerCreate());
+		        access.setCustomerDelete(moduleAccess.isCustomerDelete());
+		        access.setCustomerEdit(moduleAccess.isCustomerEdit());
+
+		        access.setProjectViewAll(moduleAccess.isProjectViewAll());
+		        access.setProjectOwnView(moduleAccess.isProjectOwnView());
+		        access.setProjectCreate(moduleAccess.isProjectCreate());
+		        access.setProjectDelete(moduleAccess.isProjectDelete());
+		        access.setProjectEdit(moduleAccess.isProjectEdit());
+		        
+		        
+		        moduleAccessRepository.save(access);
+			return ResponseEntity.ok(access);
 
 		} catch (Exception e) {
 			e.printStackTrace();

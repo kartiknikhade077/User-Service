@@ -16,6 +16,17 @@ public class ModuleAccess {
 	private boolean leadAccess;
 	private boolean template;
 	private boolean email;
+	private boolean customerViewAll;
+	private boolean customerOwnView;
+	private boolean customerCreate;
+	private boolean customerDelete;
+	private boolean customerEdit;
+	private boolean projectViewAll;
+	private boolean projectOwnView;
+	private boolean projectCreate;
+	private boolean projectDelete;
+	private boolean projectEdit;
+	
 	
 	public ModuleAccess(String moduleAccessId, String companyId, String employeeId, boolean lead, boolean template,
 			boolean email) {
@@ -94,6 +105,125 @@ public class ModuleAccess {
 
 	public void setEmail(boolean email) {
 		this.email = email;
+	}
+
+
+	public boolean isCustomerCreate() {
+		return customerCreate;
+	}
+
+
+
+	public void setCustomerCreate(boolean customerCreate) {
+		this.customerCreate = customerCreate;
+	}
+
+
+
+	public boolean isCustomerDelete() {
+		return customerDelete;
+	}
+
+
+
+	public void setCustomerDelete(boolean customerDelete) {
+		this.customerDelete = customerDelete;
+	}
+
+
+
+	public boolean isCustomerEdit() {
+		return customerEdit;
+	}
+
+
+
+	public void setCustomerEdit(boolean customerEdit) {
+		this.customerEdit = customerEdit;
+	}
+
+
+
+	public boolean isCustomerViewAll() {
+		return customerViewAll;
+	}
+
+
+
+	public void setCustomerViewAll(boolean customerViewAll) {
+		this.customerViewAll = customerViewAll;
+	}
+
+
+
+	public boolean isCustomerOwnView() {
+		return customerOwnView;
+	}
+
+
+
+	public void setCustomerOwnView(boolean customerOwnView) {
+		this.customerOwnView = customerOwnView;
+	}
+
+
+
+	public boolean isProjectViewAll() {
+		return projectViewAll;
+	}
+
+
+
+	public void setProjectViewAll(boolean projectViewAll) {
+		this.projectViewAll = projectViewAll;
+	}
+
+
+
+	public boolean isProjectOwnView() {
+		return projectOwnView;
+	}
+
+
+
+	public void setProjectOwnView(boolean projectOwnView) {
+		this.projectOwnView = projectOwnView;
+	}
+
+
+
+	public boolean isProjectCreate() {
+		return projectCreate;
+	}
+
+
+
+	public void setProjectCreate(boolean projectCreate) {
+		this.projectCreate = projectCreate;
+	}
+
+
+
+	public boolean isProjectDelete() {
+		return projectDelete;
+	}
+
+
+
+	public void setProjectDelete(boolean projectDelete) {
+		this.projectDelete = projectDelete;
+	}
+
+
+
+	public boolean isProjectEdit() {
+		return projectEdit;
+	}
+
+
+
+	public void setProjectEdit(boolean projectEdit) {
+		this.projectEdit = projectEdit;
 	}
 	
 	
