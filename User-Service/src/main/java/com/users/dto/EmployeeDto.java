@@ -34,6 +34,11 @@ public class EmployeeDto {
 	private boolean projectCreate;
 	private boolean projectDelete;
 	private boolean projectEdit;
+	private boolean timeSheetAccess;
+	private boolean timeSheetViewAll;
+	private boolean timeSheetCreate;
+	private boolean timeSheetDelete;
+	private boolean timeSheetEdit;
 	public EmployeeDto(int employeeId,int companyId, int userId, String name, String email, String phone, String description,
 			String department, String gender, boolean leadAccess, boolean templateAccess, boolean emailAccess,String password) {
 		super();
@@ -53,13 +58,15 @@ public class EmployeeDto {
 	}
 	
 	
-	
+	// this is dto use while create employee
+   
 	public EmployeeDto(int employeeId, int userId, int companyId, String name, String email, String password,
 			String phone, String description, String department, String gender, String departmentId, String roleId,
 			String roleName, boolean leadAccess, boolean templateAccess, boolean emailAccess, boolean customerViewAll,
 			boolean customerOwnView, boolean customerCreate, boolean customerDelete, boolean customerEdit,
 			boolean projectViewAll, boolean projectOwnView, boolean projectCreate, boolean projectDelete,
-			boolean projectEdit) {
+			boolean projectEdit, boolean timeSheetAccess, boolean timeSheetViewAll, boolean timeSheetCreate,
+			boolean timeSheetDelete, boolean timeSheetEdit) {
 		super();
 		this.employeeId = employeeId;
 		this.userId = userId;
@@ -87,6 +94,11 @@ public class EmployeeDto {
 		this.projectCreate = projectCreate;
 		this.projectDelete = projectDelete;
 		this.projectEdit = projectEdit;
+		this.timeSheetAccess = timeSheetAccess;
+		this.timeSheetViewAll = timeSheetViewAll;
+		this.timeSheetCreate = timeSheetCreate;
+		this.timeSheetDelete = timeSheetDelete;
+		this.timeSheetEdit = timeSheetEdit;
 	}
 
 
@@ -95,6 +107,57 @@ public class EmployeeDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	public boolean isTimeSheetAccess() {
+		return timeSheetAccess;
+	}
+
+
+	public void setTimeSheetAccess(boolean timeSheetAccess) {
+		this.timeSheetAccess = timeSheetAccess;
+	}
+
+
+	public boolean isTimeSheetViewAll() {
+		return timeSheetViewAll;
+	}
+
+
+	public void setTimeSheetViewAll(boolean timeSheetViewAll) {
+		this.timeSheetViewAll = timeSheetViewAll;
+	}
+
+
+	public boolean isTimeSheetCreate() {
+		return timeSheetCreate;
+	}
+
+
+	public void setTimeSheetCreate(boolean timeSheetCreate) {
+		this.timeSheetCreate = timeSheetCreate;
+	}
+
+
+	public boolean isTimeSheetDelete() {
+		return timeSheetDelete;
+	}
+
+
+	public void setTimeSheetDelete(boolean timeSheetDelete) {
+		this.timeSheetDelete = timeSheetDelete;
+	}
+
+
+	public boolean isTimeSheetEdit() {
+		return timeSheetEdit;
+	}
+
+
+	public void setTimeSheetEdit(boolean timeSheetEdit) {
+		this.timeSheetEdit = timeSheetEdit;
+	}
+
+
 	public int getEmployeeId() {
 		return employeeId;
 	}

@@ -28,6 +28,11 @@ public class Role {
 	private boolean projectCreate;
 	private boolean projectDelete;
 	private boolean projectEdit;
+	private boolean timeSheetAccess;
+	private boolean timeSheetViewAll;
+	private boolean timeSheetCreate;
+	private boolean timeSheetDelete;
+	private boolean timeSheetEdit;
 	public Role(String roleId, String departmentId, String companyId, String roleName, boolean leadAccess,
 			boolean templateAccess, boolean emailAccess) {
 		super();
@@ -146,6 +151,36 @@ public class Role {
 	}
 	public void setProjectEdit(boolean projectEdit) {
 		this.projectEdit = projectEdit;
+	}
+	public boolean isTimeSheetAccess() {
+		return timeSheetAccess;
+	}
+	public void setTimeSheetAccess(boolean timeSheetAccess) {
+		this.timeSheetAccess = timeSheetAccess;
+	}
+	public boolean isTimeSheetViewAll() {
+		return timeSheetViewAll;
+	}
+	public void setTimeSheetViewAll(boolean timeSheetViewAll) {
+		this.timeSheetViewAll = timeSheetViewAll;
+	}
+	public boolean isTimeSheetCreate() {
+		return timeSheetCreate;
+	}
+	public void setTimeSheetCreate(boolean timeSheetCreate) {
+		this.timeSheetCreate = timeSheetCreate;
+	}
+	public boolean isTimeSheetDelete() {
+		return timeSheetDelete;
+	}
+	public void setTimeSheetDelete(boolean timeSheetDelete) {
+		this.timeSheetDelete = timeSheetDelete;
+	}
+	public boolean isTimeSheetEdit() {
+		return timeSheetEdit;
+	}
+	public void setTimeSheetEdit(boolean timeSheetEdit) {
+		this.timeSheetEdit = timeSheetEdit;
 	}
 	
 	

@@ -26,7 +26,11 @@ public class ModuleAccess {
 	private boolean projectCreate;
 	private boolean projectDelete;
 	private boolean projectEdit;
-	
+	private boolean timeSheetAccess;
+	private boolean timeSheetViewAll;
+	private boolean timeSheetCreate;
+	private boolean timeSheetDelete;
+	private boolean timeSheetEdit;
 	
 	public ModuleAccess(String moduleAccessId, String companyId, String employeeId, boolean lead, boolean template,
 			boolean email) {
@@ -224,6 +228,66 @@ public class ModuleAccess {
 
 	public void setProjectEdit(boolean projectEdit) {
 		this.projectEdit = projectEdit;
+	}
+
+
+
+	public boolean isTimeSheetAccess() {
+		return timeSheetAccess;
+	}
+
+
+
+	public void setTimeSheetAccess(boolean timeSheetAccess) {
+		this.timeSheetAccess = timeSheetAccess;
+	}
+
+
+
+	public boolean isTimeSheetViewAll() {
+		return timeSheetViewAll;
+	}
+
+
+
+	public void setTimeSheetViewAll(boolean timeSheetViewAll) {
+		this.timeSheetViewAll = timeSheetViewAll;
+	}
+
+
+
+	public boolean isTimeSheetCreate() {
+		return timeSheetCreate;
+	}
+
+
+
+	public void setTimeSheetCreate(boolean timeSheetCreate) {
+		this.timeSheetCreate = timeSheetCreate;
+	}
+
+
+
+	public boolean isTimeSheetDelete() {
+		return timeSheetDelete;
+	}
+
+
+
+	public void setTimeSheetDelete(boolean timeSheetDelete) {
+		this.timeSheetDelete = timeSheetDelete;
+	}
+
+
+
+	public boolean isTimeSheetEdit() {
+		return timeSheetEdit;
+	}
+
+
+
+	public void setTimeSheetEdit(boolean timeSheetEdit) {
+		this.timeSheetEdit = timeSheetEdit;
 	}
 	
 	
