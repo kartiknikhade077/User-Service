@@ -39,6 +39,11 @@ public class EmployeeDto {
 	private boolean timeSheetCreate;
 	private boolean timeSheetDelete;
 	private boolean timeSheetEdit;
+	private boolean leadModuleAccess;
+	private boolean leadViewAll;
+	private boolean leadCreate;
+	private boolean leadDelete;
+	private boolean leadEdit;
 	public EmployeeDto(int employeeId,int companyId, int userId, String name, String email, String phone, String description,
 			String department, String gender, boolean leadAccess, boolean templateAccess, boolean emailAccess,String password) {
 		super();
@@ -55,18 +60,27 @@ public class EmployeeDto {
 		this.emailAccess = emailAccess;
 		this.companyId=companyId;
 		this.password=password;
+		
 	}
 	
 	
 	// this is dto use while create employee
+
    
+
+	public EmployeeDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public EmployeeDto(int employeeId, int userId, int companyId, String name, String email, String password,
 			String phone, String description, String department, String gender, String departmentId, String roleId,
 			String roleName, boolean leadAccess, boolean templateAccess, boolean emailAccess, boolean customerViewAll,
 			boolean customerOwnView, boolean customerCreate, boolean customerDelete, boolean customerEdit,
 			boolean projectViewAll, boolean projectOwnView, boolean projectCreate, boolean projectDelete,
 			boolean projectEdit, boolean timeSheetAccess, boolean timeSheetViewAll, boolean timeSheetCreate,
-			boolean timeSheetDelete, boolean timeSheetEdit) {
+			boolean timeSheetDelete, boolean timeSheetEdit, boolean leadModuleAccess, boolean leadViewAll,
+			boolean leadCreate, boolean leadDelete, boolean leadEdit) {
 		super();
 		this.employeeId = employeeId;
 		this.userId = userId;
@@ -99,14 +113,13 @@ public class EmployeeDto {
 		this.timeSheetCreate = timeSheetCreate;
 		this.timeSheetDelete = timeSheetDelete;
 		this.timeSheetEdit = timeSheetEdit;
+		this.leadModuleAccess = leadModuleAccess;
+		this.leadViewAll = leadViewAll;
+		this.leadCreate = leadCreate;
+		this.leadDelete = leadDelete;
+		this.leadEdit = leadEdit;
 	}
 
-
-
-	public EmployeeDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public boolean isTimeSheetAccess() {
 		return timeSheetAccess;
@@ -316,6 +329,56 @@ public class EmployeeDto {
 	}
 	public void setProjectEdit(boolean projectEdit) {
 		this.projectEdit = projectEdit;
+	}
+
+
+	public boolean isLeadModuleAccess() {
+		return leadModuleAccess;
+	}
+
+
+	public void setLeadModuleAccess(boolean leadModuleAccess) {
+		this.leadModuleAccess = leadModuleAccess;
+	}
+
+
+	public boolean isLeadViewAll() {
+		return leadViewAll;
+	}
+
+
+	public void setLeadViewAll(boolean leadViewAll) {
+		this.leadViewAll = leadViewAll;
+	}
+
+
+	public boolean isLeadCreate() {
+		return leadCreate;
+	}
+
+
+	public void setLeadCreate(boolean leadCreate) {
+		this.leadCreate = leadCreate;
+	}
+
+
+	public boolean isLeadDelete() {
+		return leadDelete;
+	}
+
+
+	public void setLeadDelete(boolean leadDelete) {
+		this.leadDelete = leadDelete;
+	}
+
+
+	public boolean isLeadEdit() {
+		return leadEdit;
+	}
+
+
+	public void setLeadEdit(boolean leadEdit) {
+		this.leadEdit = leadEdit;
 	}
 	
 	

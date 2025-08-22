@@ -171,7 +171,11 @@ public class CompanyController {
 			module.setTimeSheetCreate(employeeDto.isTimeSheetCreate());
 			module.setTimeSheetEdit(employeeDto.isTimeSheetEdit());
 			module.setTimeSheetDelete(employeeDto.isTimeSheetDelete());
-
+            module.setLeadModuleAccess(employeeDto.isLeadModuleAccess());
+            module.setLeadViewAll(employeeDto.isLeadViewAll());
+            module.setLeadCreate(employeeDto.isLeadCreate());
+            module.setLeadEdit(employeeDto.isLeadEdit());
+            module.setLeadDelete(employeeDto.isLeadDelete());
 			moduleAccessRepository.save(module);
 
 			return ResponseEntity.ok(employee);
@@ -278,6 +282,12 @@ public class CompanyController {
 		        access.setTimeSheetCreate(moduleAccess.isTimeSheetCreate());
 		        access.setTimeSheetEdit(moduleAccess.isTimeSheetEdit());
 		        access.setTimeSheetDelete(moduleAccess.isTimeSheetDelete());
+		        
+		        access.setLeadModuleAccess(moduleAccess.isLeadModuleAccess());
+		        access.setLeadViewAll(moduleAccess.isLeadViewAll());
+		        access.setLeadCreate(moduleAccess.isLeadCreate());
+		        access.setLeadEdit(moduleAccess.isLeadEdit());
+		        access.setLeadDelete(moduleAccess.isLeadDelete());
 		        
 		        moduleAccessRepository.save(access);
 			return ResponseEntity.ok(access);

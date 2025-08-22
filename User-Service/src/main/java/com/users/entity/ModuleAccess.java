@@ -31,6 +31,11 @@ public class ModuleAccess {
 	private boolean timeSheetCreate;
 	private boolean timeSheetDelete;
 	private boolean timeSheetEdit;
+	private boolean leadModuleAccess;
+	private boolean leadViewAll;
+	private boolean leadCreate;
+	private boolean leadDelete;
+	private boolean leadEdit;
 	
 	public ModuleAccess(String moduleAccessId, String companyId, String employeeId, boolean lead, boolean template,
 			boolean email) {
@@ -260,34 +265,64 @@ public class ModuleAccess {
 		return timeSheetCreate;
 	}
 
-
-
 	public void setTimeSheetCreate(boolean timeSheetCreate) {
 		this.timeSheetCreate = timeSheetCreate;
 	}
-
-
 
 	public boolean isTimeSheetDelete() {
 		return timeSheetDelete;
 	}
 
-
-
 	public void setTimeSheetDelete(boolean timeSheetDelete) {
 		this.timeSheetDelete = timeSheetDelete;
 	}
-
-
 
 	public boolean isTimeSheetEdit() {
 		return timeSheetEdit;
 	}
 
-
-
 	public void setTimeSheetEdit(boolean timeSheetEdit) {
 		this.timeSheetEdit = timeSheetEdit;
+	}
+
+	public boolean isLeadModuleAccess() {
+		return leadModuleAccess;
+	}
+
+	public void setLeadModuleAccess(boolean leadModuleAccess) {
+		this.leadModuleAccess = leadModuleAccess;
+	}
+
+	public boolean isLeadViewAll() {
+		return leadViewAll;
+	}
+
+	public void setLeadViewAll(boolean leadViewAll) {
+		this.leadViewAll = leadViewAll;
+	}
+
+	public boolean isLeadCreate() {
+		return leadCreate;
+	}
+
+	public void setLeadCreate(boolean leadCreate) {
+		this.leadCreate = leadCreate;
+	}
+
+	public boolean isLeadDelete() {
+		return leadDelete;
+	}
+
+	public void setLeadDelete(boolean leadDelete) {
+		this.leadDelete = leadDelete;
+	}
+
+	public boolean isLeadEdit() {
+		return leadEdit;
+	}
+
+	public void setLeadEdit(boolean leadEdit) {
+		this.leadEdit = leadEdit;
 	}
 	
 	
